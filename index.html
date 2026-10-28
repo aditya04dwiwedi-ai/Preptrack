@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Placement Preparation &amp; Tracking System | AKTU Mini Project</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Application CSS -->
+  <link rel="stylesheet" href="static/style.css">
+  <!-- PrepBot chat widget -->
+  <link rel="stylesheet" href="static/chatbot.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <!-- SIDEBAR NAVIGATION -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">P</div>
+      <div>
+        <strong>PrepTrack</strong>
+        <small>PLACEMENT TRACKER</small>
+      </div>
+    </div>
+
+    <div class="nav-caption">SYSTEM WORKFLOW</div>
+    <nav class="sidebar-nav">
+      <a class="nav-link active" href="#dashboard">
+        <i class="bi bi-grid-1x2-fill"></i> <span>1. Dashboard</span>
+      </a>
+      <a class="nav-link" href="#preparation">
+        <i class="bi bi-sliders"></i> <span>2. Preparation Tracker</span>
+      </a>
+      <a class="nav-link" href="#weak-areas">
+        <i class="bi bi-crosshair"></i> <span>3. Weak Area Finder</span>
+      </a>
+      <a class="nav-link" href="#mock-test">
+        <i class="bi bi-patch-question-fill"></i> <span>4. Mock Test (5 Qs)</span>
+      </a>
+      <a class="nav-link" href="#goals">
+        <i class="bi bi-check2-circle"></i> <span>5. Daily Goals</span>
+      </a>
+      <a class="nav-link" href="#suggestions">
+        <i class="bi bi-lightbulb-fill"></i> <span>6. Company Suggestions</span>
+      </a>
+      <a class="nav-link" href="#companies">
+        <i class="bi bi-briefcase-fill"></i> <span>7. Company Pipeline</span>
+      </a>
+      <a class="nav-link" href="#students">
+        <i class="bi bi-people-fill"></i> <span>8. Sample Records</span>
+      </a>
+    </nav>
+
+    <!-- ACADEMIC AFFILIATION TAG -->
+    <div class="sidebar-academic-tag">
+      <div class="fw-bold text-white mb-1"><i class="bi bi-mortarboard-fill text-warning"></i> AKTU Mini Project</div>
+      <small>LIET Greater Noida</small>
+      <span>B.Tech CSE – AIML · 2026–27</span>
+      <span class="text-secondary small mt-1">Guide: Mr. Abhishek Suraj</span>
+    </div>
+
+    <!-- STUDENT PROFILE PILL -->
+    <div class="sidebar-bottom" id="userProfileBtn" role="button" onclick="openProfileModal()" title="Click to edit student profile">
+      <div class="mini-avatar" id="sideAvatar">AD</div>
+      <div class="sidebar-user-info">
+        <strong id="sideName">Aditya Dwivedi</strong>
+        <small id="sideBranch">CSE - AIML · <span id="sideCgpa">8.2</span> CGPA</small>
+      </div>
+      <i class="bi bi-pencil-square text-muted ms-auto"></i>
+    </div>
+  </aside>
+
+  <!-- MAIN APPLICATION CONTENT -->
+  <main class="main-content">
+    
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div>
+        <span class="eyebrow"><i class="bi bi-award-fill"></i> DR. A.P.J. ABDUL KALAM TECHNICAL UNIVERSITY · MINI PROJECT</span>
+        <h1>Placement Preparation &amp; Tracking System</h1>
+        <p>An integrated Python-Flask web application for student skill tracking, weak area diagnostics, mock tests, and company applications.</p>
+      </div>
+      <div class="top-right">
+        <!-- Live Backend Badge -->
+        <div id="backendStatusBadge" class="backend-pill">
+          <span class="live-dot pulse"></span>
+          <span>Checking API...</span>
+        </div>
+
+        <button class="btn btn-sm btn-outline-danger rounded-pill px-3" onclick="resetSystemData()" title="Reset to initial synopsis demo data">
+          <i class="bi bi-arrow-counterclockwise"></i> Reset Data
+        </button>
+
+        <button class="btn btn-sm btn-outline-secondary rounded-pill print-btn" onclick="window.print()" title="Print Summary Report">
+          <i class="bi bi-printer"></i> Print
+        </button>
+      </div>
+    </header>
+
+    <!-- SYNOPSIS HERO BANNER -->
+    <section id="dashboard" class="hero-card">
+      <div class="hero-text">
+        <span class="hero-tag">✦ CSE - AIML MINI PROJECT · SESSION 2026–27 · GUIDE: MR. ABHISHEK SURAJ</span>
+        <h2>Master Key Subjects.<br><em>Track Campus Placement Readiness.</em></h2>
+        <p>Dynamic scoring across 5 core subjects: <strong>Python, C, DSA, DBMS &amp; Aptitude</strong> with automated weak-area detection (&lt;50%), timed 5-concept placement mock tests, and end-to-end company drive tracking.</p>
+        <div class="hero-actions">
+          <a href="#mock-test" class="btn btn-light text-primary fw-bold rounded-pill px-4 shadow-sm">
+            <i class="bi bi-play-circle-fill me-1"></i> Attempt Mock Test
+          </a>
+          <a href="#preparation" class="btn btn-outline-light rounded-pill px-4">
+            <i class="bi bi-sliders me-1"></i> Update Subject Progress
+          </a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="hero-cap"><i class="bi bi-mortarboard-fill"></i></div>
+        <div class="hero-sticker">AKTU<br>READY <span>★</span></div>
+      </div>
+    </section>
+
+    <!-- STATS & PLACEMENT METER -->
+    <section class="stats-grid">
+      <!-- 1. Overall Score & Placement Meter -->
+      <article class="stat-card">
+        <div class="stat-top">
+          <span>Placement Meter</span>
+          <span class="stat-icon purple"><i class="bi bi-speedometer2"></i></span>
+        </div>
+        <div class="stat-value"><span id="overallScore">52</span><small>%</small></div>
+        <div class="progress slim">
+          <div id="overallBar" class="progress-bar purple-bar" style="width:52%"></div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-2">
+          <span id="overallStatusBadge" class="badge bg-primary-subtle text-primary fw-bold">Good</span>
+          <small id="overallStatus" class="muted">50–74% range</small>
+        </div>
+      </article>
+
+      <!-- 2. Tracked Subjects -->
+      <article class="stat-card">
+        <div class="stat-top">
+          <span>Tracked Subjects</span>
+          <span class="stat-icon blue"><i class="bi bi-journal-code"></i></span>
+        </div>
+        <div class="stat-value">05<small>/05</small></div>
+        <p class="muted mb-1">Python · C · DSA · DBMS · Aptitude</p>
+        <div class="stat-foot text-primary" role="button" onclick="document.getElementById('preparation').scrollIntoView({behavior:'smooth'})">
+          Tune subject levels <i class="bi bi-arrow-right"></i>
+        </div>
+      </article>
+
+      <!-- 3. Daily Goals -->
+      <article class="stat-card">
+        <div class="stat-top">
+          <span>Daily Goals</span>
+          <span class="stat-icon green"><i class="bi bi-check2-all"></i></span>
+        </div>
+        <div class="stat-value"><span id="goalCount">1</span><small id="goalTotalSuffix">/4 done</small></div>
+        <div class="progress slim">
+          <div id="goalProgressBar" class="progress-bar bg-success" style="width:25%"></div>
+        </div>
+        <div class="stat-foot"><a href="#goals">Manage preparation goals →</a></div>
+      </article>
+
+      <!-- 4. Company Applications -->
+      <article class="stat-card">
+        <div class="stat-top">
+          <span>Companies Tracked</span>
+          <span class="stat-icon orange"><i class="bi bi-building-check"></i></span>
+        </div>
+        <div class="stat-value" id="applicationCount">04</div>
+        <p class="muted mb-1" id="interviewHighlight">1 Interview scheduled</p>
+        <div class="stat-foot"><a href="#companies">View application pipeline →</a></div>
+      </article>
+    </section>
+
+    <!-- SECTION 2 & 3: PREPARATION TRACKER & WEAK AREA FINDER -->
+    <div class="section-heading" id="preparation">
+      <div>
+        <span class="eyebrow"><i class="bi bi-graph-up-arrow"></i> SYNOPSIS MODULES 2 &amp; 3</span>
+        <h2>Preparation Tracker &amp; Weak Area Finder</h2>
+        <p>Adjust progress values (0–100%) for the five core subjects. Subjects below 50% are automatically flagged dynamically.</p>
+      </div>
+      <button class="btn btn-dark rounded-pill px-4" onclick="saveSubjects()">
+        <i class="bi bi-cloud-arrow-up-fill me-1"></i> Save Progress
+      </button>
+    </div>
+
+    <section class="content-grid">
+      <!-- Subject-wise Progress Sliders -->
+      <article class="panel subject-panel">
+        <div class="panel-heading">
+          <div>
+            <h3>Core Subject Progress</h3>
+            <p>Slide to calibrate current preparation level (0–100%)</p>
+          </div>
+          <span class="pill"><i class="bi bi-sliders"></i> 5 Core Subjects</span>
+        </div>
+        <div id="subjectList" class="subject-list"></div>
+        <div id="saveMessage" class="feedback"></div>
+      </article>
+
+      <!-- Dynamic Weak Area Finder -->
+      <article class="panel weak-panel" id="weak-areas">
+        <div class="panel-heading">
+          <div>
+            <h3>Weak Area Finder</h3>
+            <p>Dynamically identifies subjects with preparation &lt; 50%</p>
+          </div>
+          <span class="target-icon"><i class="bi bi-shield-exclamation"></i></span>
+        </div>
+        <div id="weakList" class="weak-list"></div>
+        <div class="tip-box">
+          <strong><i class="bi bi-lightbulb-fill text-warning"></i> Placement Strategy Tip</strong>
+          <p class="mb-0">Campus recruiters often use eliminate-first technical screening rounds on DSA &amp; DBMS. Spending 30 minutes daily on flagged weak areas drastically boosts placement clearance rates.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- SECTION 4 & 5: PLACEMENT MOCK TEST & DAILY GOALS -->
+    <div class="section-heading" id="mock-test">
+      <div>
+        <span class="eyebrow"><i class="bi bi-cpu-fill"></i> SYNOPSIS MODULES 4 &amp; 5</span>
+        <h2>Placement Mock Test &amp; Daily Goals</h2>
+        <p>Attempt the 5-concept placement mock test specified in the synopsis (HTML, FIFO, Python comments, SQL, LIFO) or practice topic-wise questions.</p>
+      </div>
+    </div>
+
+    <section class="content-grid">
+      <!-- Placement Mock Test -->
+      <article class="panel mock-test-panel">
+        <div class="panel-heading">
+          <div>
+            <h3>Placement Mock Test</h3>
+            <p>Multiple-choice placement assessment with backend scoring &amp; explanations</p>
+          </div>
+          <div class="test-controls d-flex align-items-center gap-2">
+            <select id="quizCategorySelect" class="form-select form-select-sm" onchange="loadQuestions()">
+              <option value="Synopsis" selected>Core Synopsis Test (5 Qs: HTML, FIFO, Python, SQL, LIFO)</option>
+              <option value="Python">Python</option>
+              <option value="C">C Language</option>
+              <option value="DSA">Data Structures &amp; Algorithms</option>
+              <option value="DBMS">DBMS &amp; SQL</option>
+              <option value="Aptitude">Quantitative Aptitude</option>
+              <option value="All">All Subjects Mixed</option>
+            </select>
+            <select id="quizCountSelect" class="form-select form-select-sm" onchange="loadQuestions()">
+              <option value="5" selected>5 Qs</option>
+              <option value="10">10 Qs</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="quiz-timer-bar d-flex justify-content-between align-items-center mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-secondary-subtle text-secondary" id="activeCategoryBadge">Core Synopsis (5 Qs)</span>
+            <small class="text-muted" id="questionCountText">5 Questions</small>
+          </div>
+          <div class="timer-display" id="timerBox">
+            <i class="bi bi-stopwatch"></i> <span id="timerText">05:00</span>
+          </div>
+        </div>
+
+        <form id="quizForm">
+          <div id="questionList" class="quiz-questions"></div>
+          <div class="d-flex gap-2 mt-4">
+            <button class="btn btn-primary rounded-pill px-4" type="submit">
+              <i class="bi bi-check-circle-fill me-1"></i> Submit Test
+            </button>
+            <button class="btn btn-outline-secondary rounded-pill px-3" type="button" onclick="loadQuestions()">
+              <i class="bi bi-arrow-clockwise me-1"></i> Reset
+            </button>
+          </div>
+        </form>
+
+        <div id="quizResult" class="result-box hidden mt-4"></div>
+        <div id="quizReviewContainer" class="quiz-review hidden mt-3"></div>
+
+        <!-- Recent Attempts History -->
+        <div class="mt-4 pt-3 border-top">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="mb-0 fs-6 fw-bold"><i class="bi bi-clock-history"></i> Test Attempt Log</h5>
+            <small class="text-muted">Recorded via Flask Backend API</small>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-sm align-middle mb-0">
+              <thead>
+                <tr>
+                  <th>CATEGORY</th>
+                  <th>SCORE</th>
+                  <th>PERCENTAGE</th>
+                  <th>DATE &amp; TIME</th>
+                </tr>
+              </thead>
+              <tbody id="testHistoryRows">
+                <tr><td colspan="4" class="text-muted text-center py-2">No attempts recorded yet. Take the test above!</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Daily Preparation Goals -->
+      <article class="panel" id="goals">
+        <div class="panel-heading">
+          <div>
+            <h3>Daily Preparation Goals</h3>
+            <p>Plan daily targets and toggle between Pending and Completed</p>
+          </div>
+          <span class="target-icon"><i class="bi bi-calendar-check"></i></span>
+        </div>
+
+        <form id="goalForm" class="inline-form mb-3">
+          <input id="goalInput" class="form-control" placeholder="e.g. Solve 5 Tree problems on LeetCode..." required>
+          <button class="btn btn-dark" type="submit"><i class="bi bi-plus-lg"></i> Add</button>
+        </form>
+
+        <div class="goal-filter-tabs mb-2 d-flex gap-1">
+          <button class="btn btn-sm btn-light active" type="button" onclick="filterGoals('all')">All</button>
+          <button class="btn btn-sm btn-light" type="button" onclick="filterGoals('pending')">Pending</button>
+          <button class="btn btn-sm btn-light" type="button" onclick="filterGoals('completed')">Completed</button>
+        </div>
+
+        <div id="goalList" class="goal-list"></div>
+      </article>
+    </section>
+
+    <!-- SECTION 6: RELATED COMPANY SUGGESTIONS (AI/ALGORITHMIC RECOMMENDATION ENGINE) -->
+    <div class="section-heading" id="suggestions">
+      <div>
+        <span class="eyebrow"><i class="bi bi-stars"></i> INTELLIGENT MATCHING ENGINE</span>
+        <h2>Related Company Suggestions</h2>
+        <p>Dynamic company recommendations evaluated from your <strong>Mock Test Score</strong>, <strong>Strong Areas (≥50%)</strong>, and <strong>Daily Goal Consistency</strong>.</p>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-sm btn-outline-primary rounded-pill px-3" onclick="fetchCompanySuggestions()" title="Recalculate matches">
+          <i class="bi bi-arrow-clockwise me-1"></i> Refresh Matches
+        </button>
+      </div>
+    </div>
+
+    <!-- PARAMETERS EVALUATION STRIP -->
+    <section class="panel mb-4 suggestion-metrics-panel">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <div class="d-flex flex-wrap align-items-center gap-3">
+          <div class="suggestion-metric-chip">
+            <span class="metric-icon purple"><i class="bi bi-patch-question-fill"></i></span>
+            <div>
+              <small class="text-muted d-block">1. Mock Test Score</small>
+              <strong id="suggMetricMock">4/5 (80%)</strong>
+            </div>
+          </div>
+          <div class="suggestion-metric-chip">
+            <span class="metric-icon green"><i class="bi bi-shield-check"></i></span>
+            <div>
+              <small class="text-muted d-block">2. Strong Areas (≥50%)</small>
+              <strong id="suggMetricStrong">Python, DBMS, C</strong>
+            </div>
+          </div>
+          <div class="suggestion-metric-chip">
+            <span class="metric-icon red"><i class="bi bi-crosshair"></i></span>
+            <div>
+              <small class="text-muted d-block">Active Weak Areas (&lt;50%)</small>
+              <strong id="suggMetricWeak" class="text-danger">DSA, Aptitude</strong>
+            </div>
+          </div>
+          <div class="suggestion-metric-chip">
+            <span class="metric-icon blue"><i class="bi bi-check2-all"></i></span>
+            <div>
+              <small class="text-muted d-block">3. Goal Consistency</small>
+              <strong id="suggMetricGoals">1/4 Done (25%)</strong>
+            </div>
+          </div>
+        </div>
+        <div class="suggestion-filter-tabs d-flex gap-1">
+          <button class="btn btn-sm btn-light active" id="btnFilterAllSugg" type="button" onclick="filterSuggestions('all')">All (<span id="suggCountAll">0</span>)</button>
+          <button class="btn btn-sm btn-light" id="btnFilterEligibleSugg" type="button" onclick="filterSuggestions('eligible')">Eligible (<span id="suggCountEligible">0</span>)</button>
+          <button class="btn btn-sm btn-light" id="btnFilterTargetSugg" type="button" onclick="filterSuggestions('target')">Target / Aspirations (<span id="suggCountTarget">0</span>)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUGGESTION CARDS GRID -->
+    <div id="companySuggestionsGrid" class="row g-3 mb-5">
+      <div class="col-12 text-center py-4 text-muted">
+        <div class="spinner-border spinner-border-sm text-primary me-2"></div>
+        Evaluating company suggestions based on your preparation profile...
+      </div>
+    </div>
+
+    <!-- SECTION 7: COMPANY APPLICATION TRACKING -->
+    <div class="section-heading" id="companies">
+      <div>
+        <span class="eyebrow"><i class="bi bi-briefcase"></i> SYNOPSIS MODULE 6</span>
+        <h2>Company Application Tracker</h2>
+        <p>Track recruitment drives across all stages: <strong>Interested, Applied, Shortlisted, Interview, Selected, Rejected</strong>.</p>
+      </div>
+      <button class="btn btn-sm btn-outline-primary rounded-pill" onclick="toggleCompanyForm()">
+        <i class="bi bi-plus-circle-fill me-1"></i> Add Company
+      </button>
+    </div>
+
+    <section class="panel">
+      <!-- Add Company Form -->
+      <form id="companyForm" class="company-form mb-4" style="display:none">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <label class="form-label">Company Name *</label>
+            <input id="companyInput" class="form-control" placeholder="e.g. TCS / Amazon / Infosys" required>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Job Role *</label>
+            <input id="roleInput" class="form-control" placeholder="e.g. SDE / Graduate Trainee" required>
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Package (CTC)</label>
+            <input id="ctcInput" class="form-control" placeholder="e.g. 7.5 LPA">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Status</label>
+            <select id="statusInput" class="form-select">
+              <option value="Interested">Interested</option>
+              <option value="Applied" selected>Applied</option>
+              <option value="Shortlisted">Shortlisted</option>
+              <option value="Interview">Interview</option>
+              <option value="Selected">Selected</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+          <div class="col-md-2 d-flex align-items-end">
+            <button class="btn btn-primary rounded-pill w-100" type="submit">+ Save</button>
+          </div>
+          <div class="col-12">
+            <input id="notesInput" class="form-control" placeholder="Interview rounds, deadlines, or test notes (optional)...">
+          </div>
+        </div>
+      </form>
+
+      <!-- Status Filter Tabs -->
+      <div class="company-filters d-flex flex-wrap gap-2 mb-3">
+        <button class="btn btn-sm btn-filter active" onclick="filterCompanies('All')">All (<span id="countAll">0</span>)</button>
+        <button class="btn btn-sm btn-filter" onclick="filterCompanies('Interested')">Interested (<span id="countInterested">0</span>)</button>
+        <button class="btn btn-sm btn-filter" onclick="filterCompanies('Applied')">Applied (<span id="countApplied">0</span>)</button>
+        <button class="btn btn-sm btn-filter" onclick="filterCompanies('Shortlisted')">Shortlisted (<span id="countShortlisted">0</span>)</button>
+        <button class="btn btn-sm btn-filter" onclick="filterCompanies('Interview')">Interview (<span id="countInterview">0</span>)</button>
+        <button class="btn btn-sm btn-filter" onclick="filterCompanies('Selected')">Selected (<span id="countSelected">0</span>)</button>
+        <button class="btn btn-sm btn-filter" onclick="filterCompanies('Rejected')">Rejected (<span id="countRejected">0</span>)</button>
+      </div>
+
+      <!-- Applications Table -->
+      <div class="table-responsive">
+        <table class="table align-middle company-table">
+          <thead>
+            <tr>
+              <th>COMPANY</th>
+              <th>JOB ROLE</th>
+              <th>PACKAGE (CTC)</th>
+              <th>NOTES &amp; ROUND DETAILS</th>
+              <th>APPLICATION STATUS</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody id="companyRows">
+            <tr><td colspan="6" class="text-center py-3 text-muted">Loading applications...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 7: SAMPLE STUDENT RECORDS -->
+    <div class="section-heading" id="students">
+      <div>
+        <span class="eyebrow"><i class="bi bi-bar-chart-steps"></i> SYNOPSIS MODULE 7</span>
+        <h2>Sample Student Records (Demo &amp; Comparison)</h2>
+        <p>Representative batch records demonstrating different preparation profiles. Click <strong>Load Profile</strong> to test how the Placement Meter and Weak Area Finder dynamically adapt.</p>
+      </div>
+    </div>
+
+    <section class="panel">
+      <div class="table-responsive">
+        <table class="table align-middle benchmark-table">
+          <thead>
+            <tr>
+              <th>STUDENT</th>
+              <th>BRANCH</th>
+              <th>CGPA</th>
+              <th>PYTHON</th>
+              <th>C</th>
+              <th>DSA</th>
+              <th>DBMS</th>
+              <th>APTITUDE</th>
+              <th>READINESS</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody id="studentRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FOOTER WITH SYNOPSIS ACADEMIC METADATA -->
+    <footer>
+      <div>
+        <strong>Placement Preparation &amp; Tracking System</strong> · AKTU B.Tech CSE (AIML) Mini-Project
+        <span class="mx-2">•</span>
+        <span>Department of CSE · LIET Greater Noida</span>
+      </div>
+      <div class="footer-right">
+        <span>Student: <strong id="footerStudentName">Aditya Dwivedi</strong> <span id="footerRollNo">(2501721530006)</span></span>
+        <span class="mx-2">•</span>
+        <span>Guide: <strong>Mr. Abhishek Suraj</strong></span>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<!-- PROFILE EDIT MODAL -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0 rounded-4">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold"><i class="bi bi-person-bounding-box text-primary me-2"></i> Edit Student Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="profileForm">
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Full Name</label>
+            <input type="text" id="editName" class="form-control" required>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Roll No</label>
+              <input type="text" id="editRollNo" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">CGPA (0–10)</label>
+              <input type="number" step="0.1" min="0" max="10" id="editCgpa" class="form-control">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Branch</label>
+            <input type="text" id="editBranch" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">College / Institute</label>
+            <input type="text" id="editCollege" class="form-control">
+          </div>
+          <div class="d-flex justify-content-end gap-2 mt-4">
+            <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary rounded-pill px-4">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST MESSAGE -->
+<div id="toast" class="toast-message"></div>
+
+<!-- BOOTSTRAP BUNDLE JS & APP CLIENT JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="static/app.js"></script>
+<!-- PrepBot chat widget -->
+<script src="static/chatbot.js"></script>
+</body>
+</html>
